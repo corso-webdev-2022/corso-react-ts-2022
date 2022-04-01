@@ -1,6 +1,5 @@
 {
-  "name": "corso-react-ts-2022",
-  "version": "0.1.0",
+  "name": "development-project",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,16 +8,21 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "12.1.4",
+    "@tailwindcss/typography": "^0.4.1",
+    "autoprefixer": "^10.4.0",
+    "gray-matter": "^4.0.3",
+    "next": "12.0.4",
+    "next-mdx-remote": "^3.0.7",
+    "postcss": "^8.4.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "tailwindcss": "^2.2.19"
   },
   "devDependencies": {
-    "@types/node": "17.0.23",
-    "@types/react": "17.0.43",
-    "@types/react-dom": "17.0.14",
-    "eslint": "8.12.0",
-    "eslint-config-next": "12.1.4",
-    "typescript": "4.6.3"
+    "@types/node": "16.11.10",
+    "@types/react": "17.0.37",
+    "eslint": "7.32.0",
+    "eslint-config-next": "12.0.4",
+    "typescript": "4.5.2"
   }
 }

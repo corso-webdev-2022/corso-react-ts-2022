@@ -1,8 +1,17 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+
+import type { AppProps } from 'next/app';
+import Layout from '../components/Layout';
+import 'tailwindcss/tailwind.css'
+import {MdxComponentsProvider} from '../context/mdxContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return <MdxComponentsProvider>  <Layout>
+
+  <Component {...pageProps} />
+
+  </Layout>
+
+  </MdxComponentsProvider>
 }
 
 export default MyApp
