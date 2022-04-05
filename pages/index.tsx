@@ -13,12 +13,17 @@ type Props = {
 const Home: NextPage<Props> = ({ posts }: Props) => {
   return (
     <div>
+      <div>
+        <Link href={`/editor`}>
+          <a href="">Editor</a>
+        </Link>
+      </div>
       <h1 className="text-4xl font-bold mb-4">Technical articles</h1>
 
       <div className="space-y-12">
         {posts.map((post) => (
           <div key={post.slug}>
-            <div className="mb-4"> 
+            <div className="mb-4">
               <Thumbnail
                 slug={post.slug}
                 title={post.title}
@@ -36,7 +41,7 @@ const Home: NextPage<Props> = ({ posts }: Props) => {
           </div>
         ))}
       </div>
-    </div>
+    </div >
   )
 }
 

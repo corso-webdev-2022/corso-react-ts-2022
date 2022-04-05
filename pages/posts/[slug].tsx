@@ -1,3 +1,5 @@
+// https://blog.nrwl.io/read-and-render-md-files-with-next-js-and-nx-89a85c1d9b44#f387
+
 import { serialize } from 'next-mdx-remote/serialize';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { useEffect } from 'react';
@@ -80,7 +82,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 export const getStaticPaths: GetStaticPaths = () => {
-    //only get the slug from posts 
+    //only get the slug from posts
     const posts = getAllPosts(['slug']);
 
     // map through to return post paths
