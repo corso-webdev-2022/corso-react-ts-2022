@@ -24,10 +24,10 @@ type Post = {
 const POSTS_PATH = join(process.cwd(),'_posts');
 
 // get the file paths of all available list of posts
-function getPostsFilePaths(): string[]{
+function getPostsFilePaths(sub?: string | null): string[]{
     return (
         // return the mdx file post path
-        fs.readdirSync(POSTS_PATH)
+        fs.readdirSync(POSTS_PATH + (sub ? sub : ''))
         // load the post content from the mdx files
         .filter((path) => /\.mdx?$/.test(path))
     )
@@ -77,8 +77,24 @@ export function getPostItems(filePath:string,fields:string[] = []): Items{
 
 // getting all posts
 export function getAllPosts(fields: string[]): Items []{
-    // add paths for getting all posts 
+    // add paths for getting all posts
     const filePaths = getPostsFilePaths();
+    // get the posts from the filepaths with the needed fields sorted by date
+    const posts = filePaths.map((filePath) => getPostItems(filePath,fields)).sort((post1,post2) => post1.date > post2.date ? 1 : -1);
+    // return the available post
+    return posts;
+}
+
+export function getPostsByPath(path :string, _fields: string[]): Items []{
+    const fields = _fields || [
+        'title',
+        'slug',
+        'date',
+        'description',
+        'thumbnail'
+      ];
+    // add paths for getting all posts
+    const filePaths = getPostsFilePaths(path);
     // get the posts from the filepaths with the needed fields sorted by date
     const posts = filePaths.map((filePath) => getPostItems(filePath,fields)).sort((post1,post2) => post1.date > post2.date ? 1 : -1);
     // return the available post

@@ -1,0 +1,1 @@
+export {LessonRoot} from './LessonRoot'; // re-export LessonRoot
