@@ -12,15 +12,30 @@ const MDEditor = dynamic(
 );
 
 function Editor() {
-  const [value, setValue] = useState("**Hello world!!!**");
-  const saveData =()=>{
-    
-  }
+  const [value, setValue] = useState("**Hello world xx!!!**");
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const response = await fetch("/api/posts/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({name:'test', value}),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('POST: ', JSON.stringify(data));
+  };
   return (
     <>
-    <Button onClick={saveData}>Save</Button>
-    <div data-color-mode="dark">
-      <MDEditor value={value} onChange={setValue} />
+    <Button onClick={onSubmit}>Save</Button>
+    <div data-color-mode="dark" className="max-h-[80%]">
+      <MDEditor value={value}  />
       <div>{value}</div>
     </div>
     </>
